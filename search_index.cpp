@@ -14,20 +14,17 @@ index_search::index_search(QMutex &mtx, QMap<QString, std::set<tgram>> &paths_to
 
     connect(filewatcher.get(), SIGNAL(fileChanged(QString)), this, SLOT(add_to_map(QString)));
     connect(filewatcher.get(), SIGNAL(directoryChanged(QString)), this, SLOT(start_index(QString)));
-    connect(filewatcher.get(), SIGNAL(), this, SLOT(start_index(QString)));
 
     connect(filewatcher.get(), SIGNAL(fileChanged(QString)), this, SLOT(file_change_slot()));
     connect(filewatcher.get(), SIGNAL(directoryChanged(QString)), this, SLOT(file_change_slot()));
 }
 
 void index_search::file_change_slot(){
-    qDebug()<<"kek 1";
     emit file_change();
 }
 
 
 void index_search::start_index(){
-    qDebug()<<"the best1";
     start_index(dir_path);
 }
 
@@ -65,14 +62,12 @@ void index_search::start_index(QString cur_path) {
 
     emit set_max_progress(1);
     emit set_progress(1);
-    qDebug() << "index end";
     emit index_end();
 //    emit finished();
 }
 
 
 void index_search::add_to_map(QString const &path) {
-    qDebug()<<"the best";
     static QMimeDatabase mimeDatabase;
        const QMimeType mimeType = mimeDatabase.mimeTypeForFile(path);
        if (mimeType.isValid() && !mimeType.inherits(QStringLiteral("text/plain"))) {
@@ -85,7 +80,7 @@ void index_search::add_to_map(QString const &path) {
         return;
     }
     std::set<tgram> tgram_set;
-    std::vector<char> buffer(READ_BLOCK);
+    std::vector<char> buffer(2 * READ_BLOCK);
     size_t count = 0;
     bool flag = true;
     char symbol[2] = {0, 0};
@@ -104,9 +99,10 @@ void index_search::add_to_map(QString const &path) {
                 symbol[1] = buffer[i];
             }
         }
-
-        symbol[0] = buffer[count - 2];
-        symbol[1] = buffer[count - 1];
+        if(count >= 2)
+            symbol[0] = buffer[count - 2];
+        if(count >= 1)
+            symbol[1] = buffer[count - 1];
 
         if(tgram_set.size() > 20000){
             flag = false;
