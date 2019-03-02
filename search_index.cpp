@@ -80,7 +80,7 @@ void index_search::add_to_map(QString const &path) {
         return;
     }
     std::set<tgram> tgram_set;
-    std::vector<char> buffer(2 * READ_BLOCK);
+    std::vector<char> buffer(3 * READ_BLOCK);
     size_t count = 0;
     bool flag = true;
     char symbol[2] = {0, 0};
