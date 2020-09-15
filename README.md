@@ -5,8 +5,6 @@ Description
 Created an analogue of GREP and directory indexing tools with UI for 
 finding string occurences in the selected folder
 
-Completed feature for automatically rebuilding indexes when file is changed
-
 Install Qt 5 on Ubuntu
 ---------------------
 Open a terminal. Type the following command and hit Enter:
@@ -29,3 +27,11 @@ chmod u+x linux.sh
 
 ### Screenshot
 <img src="https://i.loli.net/2020/09/16/raL86U32ljuDsn4.png" alt="PrSubtitle" width="650" />
+
+###Features
+* monitor file changes
+* quick search by pre-counting all triggers and searching by them
+* multithreading
+* User interface
+* automatically rebuilding indexes when file is changed
+* stop indexing or searching
