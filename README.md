@@ -28,7 +28,7 @@ chmod u+x linux.sh
 ### Screenshot
 <img src="https://i.loli.net/2020/09/16/raL86U32ljuDsn4.png" alt="PrSubtitle" width="650" />
 
-###Features
+### Features
 * monitor file changes
 * quick search by pre-counting all triggers and searching by them
 * multithreading
