@@ -127,7 +127,7 @@ void MainWindow::add_path(std::pair<QString, QVector<QString>> v){
        // tsize += k.size();
         QTreeWidgetItem *child = new QTreeWidgetItem();
         child->setText(0, k);
-        child->setText(1,QString("samar"));
+        //child->setText(1,QString("samar"));
         child->setTextColor(0, QColor::fromRgb(color1, color2, color3));
         ti->addChild(child);
     }
