@@ -2,7 +2,7 @@ String Search - Qt applications
 ====================================================
 Description
 -----------
-Created an analogue of GREP and directory indexing tools with UI for 
+Created a multi-threaded analogue of GREP and directory indexing tools with UI for 
 finding string occurences in the selected folder
 
 Install Qt 5 on Ubuntu
